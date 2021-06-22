@@ -1,9 +1,21 @@
-import React from 'react';
+import styled from 'styled-components';
+import { SiPokemon } from "react-icons/si";
+
+const HeaderWrapper = styled.header`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 60px;
+  background-color: red;
+
+  @media screen and (max-width: 1200px) {
+    
+  }
+`;
 
 function Header() {
   return (
     <div>
-      <title></title>
+      <title>Pokemon Commerce</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
       <meta property="og:url" content="" />
@@ -16,7 +28,9 @@ function Header() {
       <meta property="og:image:height" content="600" />
       <meta property="og:type" content="website" />
 
-      header
+      <HeaderWrapper>
+        <SiPokemon />
+      </HeaderWrapper>
     </div>
   );
 }
