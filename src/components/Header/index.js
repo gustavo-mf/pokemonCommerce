@@ -2,10 +2,17 @@ import styled from 'styled-components';
 import { SiPokemon } from "react-icons/si";
 
 const HeaderWrapper = styled.header`
+  width: 100%;
+  background-color: red;
+
+  @media screen and (max-width: 1200px) {
+    
+  }
+`;
+
+const InnerHeader = styled.header`
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 60px;
-  background-color: red;
 
   @media screen and (max-width: 1200px) {
     

@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import api from '../configs/api';
 
+const ProductWrapper = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
 function Product() {
   const [pokemon, setPokemon] = useState([]);
 
@@ -12,19 +17,56 @@ function Product() {
       try {
         const pokemonName = window.location.pathname.replace('/product/','').replace('/p','');
         const { data } = await api.get('pokemon/'+pokemonName);
-        console.log("data",data)
-        //setTopSellers(data.results);
+
+        console.log("data", data)
+        setPokemon(data);
+
       } catch (err) {
         console.error('error on loading pokes');
       }
     }
+
     loadPokemon();
   }, []);
   
   return (
-    <div className="product">
-      <div>Product</div>
-    </div>
+    <ProductWrapper className="product">
+      <div>
+        ImageGallery
+        sprites
+      </div>
+
+      <div className="productInfo">
+        <div className="name">
+          <h1>{pokemon.name}</h1>
+          <h2>{pokemon['types'].map((elem) => elem.type.name)}</h2>
+        </div>
+        <div>selector/gender</div>
+        <div className="properties">
+          <h2>Stats</h2>
+          stats
+          <div>
+            <span></span>
+            <span></span>
+          </div>
+
+        </div>
+        <div>
+          <span>weight: </span>
+          <span>{pokemon.weight}</span>
+        </div>
+        <div>price</div>
+        <div>buyButton/favorite</div>
+      </div>
+
+      <div>
+        ProductDetails
+
+        abilities
+        game_indices
+        moves
+      </div>
+    </ProductWrapper>
   );
 }
 
