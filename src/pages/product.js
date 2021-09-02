@@ -3,9 +3,23 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import api from '../configs/api';
 
+import ImageGallery from '../components/ImageGallery';
+
 const ProductWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+
+  > div { 
+    width: 50%;
+    max-width: 600px;
+  }
+
+  .productInfo {
+    width: 100%;
+  }
+
 `;
 
 function Product() {
@@ -31,15 +45,14 @@ function Product() {
   
   return (
     <ProductWrapper className="product">
-      <div>
-        ImageGallery
-        sprites
+      <div className="imageGallery">
+        <ImageGallery images={pokemon.sprites} />
       </div>
 
       <div className="productInfo">
         <div className="name">
           <h1>{pokemon.name}</h1>
-          <h2>{pokemon['types'].map((elem) => elem.type.name)}</h2>
+          <h2>{(pokemon['types'] ? pokemon['types'].map((elem) => elem['type'].name) : '')}</h2>
         </div>
         <div>selector/gender</div>
         <div className="properties">
